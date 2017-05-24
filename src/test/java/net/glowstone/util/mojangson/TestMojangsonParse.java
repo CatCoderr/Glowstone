@@ -4,23 +4,22 @@ import net.glowstone.util.mojangson.ex.MojangsonParseException;
 import net.glowstone.util.nbt.CompoundTag;
 import net.glowstone.util.nbt.Tag;
 import net.glowstone.util.nbt.TagType;
-import org.apache.commons.lang3.tuple.ImmutablePair;
-import org.apache.commons.lang3.tuple.Pair;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import java.util.AbstractMap;
 import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
 public class TestMojangsonParse {
 
-    private final Pair<TagType, String> testCase;
+    private final AbstractMap.Entry<TagType, String> testCase;
 
     public TestMojangsonParse(TagType tag, String mojangson) {
-        this.testCase = new ImmutablePair<>(tag, mojangson);
+        this.testCase = new AbstractMap.SimpleImmutableEntry<>(tag, mojangson);
     }
 
     @Parameterized.Parameters
