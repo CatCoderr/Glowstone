@@ -44,10 +44,7 @@ import net.glowstone.net.message.play.player.ResourcePackSendMessage;
 import net.glowstone.net.message.play.player.UseBedMessage;
 import net.glowstone.scoreboard.GlowScoreboard;
 import net.glowstone.scoreboard.GlowTeam;
-import net.glowstone.util.Convert;
-import net.glowstone.util.Position;
-import net.glowstone.util.StatisticMap;
-import net.glowstone.util.TextMessage;
+import net.glowstone.util.*;
 import net.glowstone.util.nbt.CompoundTag;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.BaseComponent;
@@ -1977,12 +1974,12 @@ public class GlowPlayer extends GlowHumanEntity implements Player {
 
     @Override
     public void playSound(Location location, Sound sound, float volume, float pitch) {
-        playSound(location, sound, sound.getCategory(), volume, pitch);
+        playSound(location, sound, SoundUtil.getCategory(SoundUtil.getVanillaId(sound)), volume, pitch);
     }
 
     @Override
     public void playSound(Location location, String sound, float volume, float pitch) {
-        playSound(location, Sound.fromId(sound), volume, pitch);
+        playSound(location, SoundUtil.getVanillaSound(sound), volume, pitch);
     }
 
     @Override
@@ -1997,7 +1994,7 @@ public class GlowPlayer extends GlowHumanEntity implements Player {
 
     @Override
     public void playSound(Location location, Sound sound, SoundCategory category, float volume, float pitch) {
-        playSound(location, sound.getId(), category, volume, pitch);
+        playSound(location, SoundUtil.getVanillaId(sound), category, volume, pitch);
     }
 
     @Override
@@ -2015,7 +2012,7 @@ public class GlowPlayer extends GlowHumanEntity implements Player {
 
     @Override
     public void stopSound(Sound sound, SoundCategory soundCategory) {
-        stopSound(sound.getId(), soundCategory);
+        stopSound(SoundUtil.getVanillaId(sound), soundCategory);
     }
 
     @Override
@@ -2040,7 +2037,7 @@ public class GlowPlayer extends GlowHumanEntity implements Player {
     }
 
     public void stopSound(SoundCategory category, Sound sound) {
-        stopSound(sound == null ? "" : sound.getId(), category);
+        stopSound(sound == null ? "" : SoundUtil.getVanillaId(sound), category);
     }
 
     @Override
