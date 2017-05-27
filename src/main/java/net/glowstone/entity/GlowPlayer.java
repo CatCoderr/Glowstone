@@ -1419,7 +1419,7 @@ public class GlowPlayer extends GlowHumanEntity implements Player {
      * @return If this recipe was not learned already.
      */
     public boolean learnRecipe(Recipe recipe, boolean notify) {
-        return recipes.add(recipe);
+        return recipe != null && recipes.add(recipe);
     }
 
     /**
